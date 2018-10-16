@@ -1,0 +1,30 @@
+INFORMAÇÃO ÚTEIS
+================
+Preparação do ambiente:
+
+Java - 7
+Tomcat - 8.5
+IDE - Eclipse
+
+================
+
+<<<<< PROJETO >>>>>
+
+Uma livraria comercializa livros de uma grande variedade de áreas.
+Cada livro é enquadrado em uma seção da livraria, que corresponde
+à área do livro. O livro pode ter vários autores e é comercializado
+por uma editora. A cada venda de livro, é emitida uma nota fiscal,
+constando os dados do cliente e do (s) livro (s) vendido (s). Se a
+venda é efetuada a prazo, é gerada uma fatura, que será enviada ao
+cliente para posterior pagamento. As seguintes informações estão
+envolvidas: nome do livro, código da área, endereço do cliente,
+nome da editora, nome do cliente, código do autor, número da nota
+fiscal, número da fatura, nome da seção, valor da fatura, preço do
+livro, data da nota fiscal, código do livro, data da fatura,
+quantidade do livro na nota fiscal, endereço do autor, código da
+seção, endereço da editora, nome da área, código da editora, nome
+do autor.
+
+<<<<< ENTREGAS >>>>>
+
+1º MODELAGEM DO BANCO / MODEL DA APPS
