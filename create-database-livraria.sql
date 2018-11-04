@@ -3,59 +3,60 @@ banco do projeto de DW2
  @@ ghonorio
 */
 
+-- no hsqldb não precisa especificar o tamanho dos INT e AUTO_INCREMENT é relativo ao IDENTITY
 -- criando tabelas do banco
 CREATE TABLE area(
-	id	INT(2) AUTO_INCREMENT PRIMARY KEY,
+	id	INT IDENTITY PRIMARY KEY,
 	nome VARCHAR(255),
-	secao INTEGER
+	secao INT
 );
 
 CREATE TABLE autor(
-	id INT(2) AUTO_INCREMENT PRIMARY KEY,
+	id INT IDENTITY PRIMARY KEY,
 	nome VARCHAR(255),
 	endereco VARCHAR(255),
-	livros INT(3)	
+	livros INT	
 );
 
 CREATE TABLE cliente(
-	id INT(2) AUTO_INCREMENT PRIMARY KEY,
+	id INT IDENTITY PRIMARY KEY,
 	nome VARCHAR(255),
 	endereco VARCHAR(255),
-	livros INT(3),
-	nfs INT(3)
+	livros INT,
+	nfs INT
 );
 
 CREATE TABLE editora(
-	id INT(2) AUTO_INCREMENT PRIMARY KEY,
+	id INT IDENTITY PRIMARY KEY,
 	nome VARCHAR(255),
 	endereco VARCHAR(255),
-	livros INT(3)	
+	livros INT	
 );
 
 CREATE TABLE livro(
-	id INT(2) AUTO_INCREMENT PRIMARY KEY,
+	id INT IDENTITY PRIMARY KEY,
 	nome VARCHAR(255),
-	autor INTEGER,
-	area INTEGER,
-	editora INTEGER,
+	autor INT,
+	area INT,
+	editora INT,
 	preco VARCHAR(255)	
 );
 
 CREATE TABLE notaFiscal(
-	id INT(2) AUTO_INCREMENT PRIMARY KEY,
+	id INT IDENTITY PRIMARY KEY,
 	cliente INTEGER,
-	numeroFatura INT(10),
+	numeroFatura INT,
 	dataFatura DATE,
-	numeroNF INT(10),
+	numeroNF INT,
 	dataNF TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-	qntLivros INT(3),
+	qntLivros INT,
 	valorNota VARCHAR(255)	
 );
 
 CREATE TABLE secao(
-	id INT(2) AUTO_INCREMENT PRIMARY KEY,
+	id INT IDENTITY PRIMARY KEY,
 	nome VARCHAR(255),
-	areas INT(3)
+	areas INT
 );
 
 -- definindo relacionamento entre objetos
