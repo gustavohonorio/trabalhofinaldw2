@@ -94,36 +94,52 @@
 								<label for="autor">Autor</label> <input
 									class="form-control" name="Autor" type="text" disabled>
 							</div>
-							</div>
+							
 							<div class="col-md-6">
 								<label for="editora">Editora</label> <input
 									class="form-control" name="editora" type="text" disabled>
 							</div>
-							</div><br>
-					<div class="form-group col-md-6">
-						<label for="preco">Preço</label> <input class="form-control"
-							name="preco" type="text" disabled>
-					</div>
-					<div class="form-group col-md-6">
-						<label for="quantidade">Quantidade</label> <select
-							class="form-control" required="required" name="quantidade">
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">				
+								<label for="preco">Preço</label> <input class="form-control"
+								name="preco" type="text" placeholder="R$" disabled>
+							</div>
+						<div class="form-group col-md-6">
+							<label for="quantidade">Quantidade</label>
+							<select	class="form-control" required="required" name="quantidade">
 							<option>1</option>
 							<option>2</option>
 							<option>3</option>							
-						</select>
+							</select>
+						</div>
+						</div>
 					</div>
-					<div class="form-groupcol-md-12">
-						<input type="text" class="form-control" id=""
-							placeholder="LIVRO EM ESTOQUE" name="disponivel"
-							disabled>
-					</div>
-					<br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="formaPagamento">Forma de pagamento</label>
+								<select	class="form-control" required="required" name="pagamento">
+									<option>A vista</option>
+									<option>2x sem juros</option>
+									<option>3x sem juros</option>							
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="quantidade">Situação</label><input type="text" class="form-control" id=""
+								placeholder="LIVRO EM ESTOQUE" name="disponivel" disabled>
+							</div>
+						</div>
+					</div><br>
+					
 					<div class="form-group">
 						<div class="modal-footer">
 							<button type="reset" class="btn btn-secondary">Redefinir</button>
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-warning">Cadastrar</button>
+							<button type="submit" class="btn btn-warning">Cadastrar venda</button>
 						</div>
 					</div>
 				
@@ -135,6 +151,102 @@
 </div>
 
 
+<!-- MODAL CADASTRAR LIVRO -->	
+<div class="modal fade" id="cadastrarLivro" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cadastrar livro</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="../controller/membros/cadastrarMembro.php">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome do cliente</label> <input
+									class="form-control" name="nomeCliente" type="text"
+									required="required">
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Endereço do cliente</label> <input
+									class="form-control" name="enderecoCliente" type="text">
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Livro</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Dom Quixote</option>
+									<option>O Conde de Monte Cristo</option>
+									<option>Um Conto de Duas Cidades</option>
+									<option>O Pequeno Principe</option>
+									<option>O Senhor dos Aneis</option>
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="autor">Autor</label> <input
+									class="form-control" name="Autor" type="text" disabled>
+							</div>
+							
+							<div class="col-md-6">
+								<label for="editora">Editora</label> <input
+									class="form-control" name="editora" type="text" disabled>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">				
+								<label for="preco">Preço</label> <input class="form-control"
+								name="preco" type="text" placeholder="R$" disabled>
+							</div>
+						<div class="form-group col-md-6">
+							<label for="quantidade">Quantidade</label>
+							<select	class="form-control" required="required" name="quantidade">
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>							
+							</select>
+						</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="form-group col-md-6">
+								<label for="formaPagamento">Forma de pagamento</label>
+								<select	class="form-control" required="required" name="pagamento">
+									<option>A vista</option>
+									<option>2x sem juros</option>
+									<option>3x sem juros</option>							
+								</select>
+							</div>
+							<div class="form-group col-md-6">
+								<label for="quantidade">Situação</label><input type="text" class="form-control" id=""
+								placeholder="LIVRO EM ESTOQUE" name="disponivel" disabled>
+							</div>
+						</div>
+					</div><br>
+					
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-warning">Cadastrar venda</button>
+						</div>
+					</div>
+				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
 
 
 
