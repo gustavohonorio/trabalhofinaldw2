@@ -40,20 +40,20 @@
 			<small id="emailHelp" class="form-text text-muted">Selecione
 				uma opção abaixo</small>
 		</div>
-		<button class="btn btn-primary" data-toggle="modal" data-target="#" disabled>Cadastrar Livros</button>
-		<button class="btn btn-primary" disabled>Listar Livros</button>
-		<button class="btn btn-primary" disabled>Remover Livros</button><br><br>
-		<button class="btn btn-success" disabled>Cadastrar Autores</button>
-		<button class="btn btn-success" disabled>Listar Autores</button>
-		<button class="btn btn-success" disabled>Remover Autores</button><br><br>
-		<button class="btn btn-warning" disabled>Cadastrar Editoras</button>
-		<button class="btn btn-warning" disabled>Listar Editoras</button>
-		<button class="btn btn-warning" disabled>Remover Editoras</button><br><br>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#cadastrarLivro">Cadastrar Livros</button>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#listarLivro">Listar Livros</button>
+		<button class="btn btn-primary" data-toggle="modal" data-target="#removerLivro">Remover Livros</button><br><br>
+		<button class="btn btn-success" data-toggle="modal" data-target="#cadastrarAutor">Cadastrar Autores</button>
+		<button class="btn btn-success" data-toggle="modal" data-target="#listarAutor">Listar Autores</button>
+		<button class="btn btn-success" data-toggle="modal" data-target="#removerAutor">Remover Autores</button><br><br>
+		<button class="btn btn-warning" data-toggle="modal" data-target="#cadastrarEditora">Cadastrar Editoras</button>
+		<button class="btn btn-warning" data-toggle="modal" data-target="#listarEditora">Listar Editoras</button>
+		<button class="btn btn-warning" data-toggle="modal" data-target="#removerEditora">Remover Editoras</button><br><br>
 		<button class="btn btn-danger" data-toggle="modal" data-target="#realizarVenda">Realizar Vendas</button>
 
 	</div>
 
-<!-- MODAL VENDER LIVRO -->	
+<!-- MODAL REALIZAR VENDA -->	
 <div class="modal fade" id="realizarVenda" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
 	<div class="modal-dialog" role="document">
@@ -151,6 +151,7 @@
 </div>
 
 
+<!-- LIVROS -->
 <!-- MODAL CADASTRAR LIVRO -->	
 <div class="modal fade" id="cadastrarLivro" tabindex="-1" role="dialog"
 	aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -161,41 +162,49 @@
 
 			</div>
 			<div class="modal-body">
-				<form method="POST"	action="../controller/membros/cadastrarMembro.php">					
+				<form method="POST"	action="#">					
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-6">
-								<label for="nome">Nome do cliente</label> <input
+								<label for="nome">Nome</label> <input
 									class="form-control" name="nomeCliente" type="text"
 									required="required">
 							</div>
 							<div class="col-md-6">
-								<label for="endereco">Endereço do cliente</label> <input
-									class="form-control" name="enderecoCliente" type="text">
+								<label for="endereco">Autor</label><select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Fabio de Castro</option>
+									<option>Vitoria Ferreira</option>
+									<option>Monteiro Lobato</option>									
+								</select>
 							</div>
 						</div>
 					</div><br>
 					<div class="form-group">
 						<div class="form-row">
 							<div class="col-md-3">
-								<label for="idade">Livro</label> <select
+								<label for="idade">Editora</label> <select
 									class="form-control" required="required" name="livro">
 									<option selected></option>
-									<option>Dom Quixote</option>
-									<option>O Conde de Monte Cristo</option>
-									<option>Um Conto de Duas Cidades</option>
-									<option>O Pequeno Principe</option>
-									<option>O Senhor dos Aneis</option>
+									<option>Scienza</option>
+									<option>Monte Vale</option>
+									<option>Starbook</option>									
 								</select>
 							</div>
 							<div class="col-md-3">
-								<label for="autor">Autor</label> <input
-									class="form-control" name="Autor" type="text" disabled>
+								<label for="autor">Area</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Contos</option>
+									<option>Fabula</option>
+									<option>Suspense</option>									
+								</select>
 							</div>
 							
 							<div class="col-md-6">
-								<label for="editora">Editora</label> <input
-									class="form-control" name="editora" type="text" disabled>
+								<label for="editora">Quantidade</label> <input
+									class="form-control" name="editora" type="number">
 							</div>
 						</div>
 					</div><br>
@@ -203,7 +212,7 @@
 						<div class="form-row">
 							<div class="col-md-6">				
 								<label for="preco">Preço</label> <input class="form-control"
-								name="preco" type="text" placeholder="R$" disabled>
+								name="preco" type="text" placeholder="R$">
 							</div>
 						<div class="form-group col-md-6">
 							<label for="quantidade">Quantidade</label>
@@ -215,29 +224,206 @@
 						</div>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="form-group col-md-6">
-								<label for="formaPagamento">Forma de pagamento</label>
-								<select	class="form-control" required="required" name="pagamento">
-									<option>A vista</option>
-									<option>2x sem juros</option>
-									<option>3x sem juros</option>							
-								</select>
-							</div>
-							<div class="form-group col-md-6">
-								<label for="quantidade">Situação</label><input type="text" class="form-control" id=""
-								placeholder="LIVRO EM ESTOQUE" name="disponivel" disabled>
-							</div>
-						</div>
-					</div><br>
+					<br>
 					
 					<div class="form-group">
 						<div class="modal-footer">
 							<button type="reset" class="btn btn-secondary">Redefinir</button>
 							<button type="button" class="btn btn-secondary"
 								data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-warning">Cadastrar venda</button>
+							<button type="submit" class="btn btn-warning">Cadastrar livro</button>
+						</div>
+					</div>
+				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<!-- MODAL LISTAR LIVRO -->	
+<div class="modal fade" id="listarLivro" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Listar livro</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Dom Quixote</option>
+									<option>O Conde de Monte Cristo</option>
+									<option>Um Conto de Duas Cidades</option>
+									<option>O Pequeno Principe</option>
+									<option>O Senhor dos Aneis</option>									
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Autor</label><select
+									class="form-control" required="required" name="livro" disabled>
+									<option selected></option>
+									<option>Fabio de Castro</option>
+									<option>Vitoria Ferreira</option>
+									<option>Monteiro Lobato</option>									
+								</select>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Editora</label> <select
+									class="form-control" required="required" name="livro" disabled>
+									<option selected></option>
+									<option>Scienza</option>
+									<option>Monte Vale</option>
+									<option>Starbook</option>									
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="autor">Area</label> <select
+									class="form-control" required="required" name="livro" disabled>
+									<option selected></option>
+									<option>Contos</option>
+									<option>Fabula</option>
+									<option>Suspense</option>									
+								</select>
+							</div>
+							
+							<div class="col-md-6">
+								<label for="editora">Quantidade</label> <input
+									class="form-control" name="editora" type="number" disabled>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">				
+								<label for="preco">Preço</label> <input class="form-control"
+								name="preco" type="text" placeholder="R$" disabled>
+							</div>
+						<div class="form-group col-md-6">
+							<label for="quantidade">Quantidade</label>
+							<select	class="form-control" required="required" name="quantidade" disabled>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>							
+							</select>
+						</div>
+						</div>
+					</div>
+					<br>
+					
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Voltar</button>
+							<button type="submit" class="btn btn-warning" disabled>Atualizar</button>
+						</div>
+					</div>
+				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<!-- MODAL LISTAR LIVRO -->	
+<div class="modal fade" id="removerLivro" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Remover livro</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Dom Quixote</option>
+									<option>O Conde de Monte Cristo</option>
+									<option>Um Conto de Duas Cidades</option>
+									<option>O Pequeno Principe</option>
+									<option>O Senhor dos Aneis</option>									
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Autor</label><select
+									class="form-control" required="required" name="livro" disabled>
+									<option selected></option>
+									<option>Fabio de Castro</option>
+									<option>Vitoria Ferreira</option>
+									<option>Monteiro Lobato</option>									
+								</select>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Editora</label> <select
+									class="form-control" required="required" name="livro" disabled>
+									<option selected></option>
+									<option>Scienza</option>
+									<option>Monte Vale</option>
+									<option>Starbook</option>									
+								</select>
+							</div>
+							<div class="col-md-3">
+								<label for="autor">Area</label> <select
+									class="form-control" required="required" name="livro" disabled>
+									<option selected></option>
+									<option>Contos</option>
+									<option>Fabula</option>
+									<option>Suspense</option>									
+								</select>
+							</div>
+							
+							<div class="col-md-6">
+								<label for="editora">Quantidade</label> <input
+									class="form-control" name="editora" type="number" disabled>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">				
+								<label for="preco">Preço</label> <input class="form-control"
+								name="preco" type="text" placeholder="R$" disabled>
+							</div>
+						<div class="form-group col-md-6">
+							<label for="quantidade">Quantidade</label>
+							<select	class="form-control" required="required" name="quantidade" disabled>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>							
+							</select>
+						</div>
+						</div>
+					</div>
+					<br>
+					
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Voltar</button>
+							<button type="submit" class="btn btn-warning" disabled>Remover</button>
 						</div>
 					</div>
 				
@@ -249,8 +435,358 @@
 </div>
 
 
+<!-- AUTORES -->
+<!-- MODAL CADASTRAR AUTOR -->	
+<div class="modal fade" id="cadastrarAutor" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cadastrar autor</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <input
+									class="form-control" name="nomeCliente" type="text"
+									required="required">
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Endereco</label><input
+									class="form-control" name="nomeCliente" type="text"
+									required="required">
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Livros</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Livro 1</option>
+									<option>Livro 2</option>
+									<option>Livro 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>							
+						</div>
+					</div><br>
+													
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-warning">Cadastrar Autor</button>
+						</div>
+					</div>				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<!-- MODAL LISTAR AUTOR -->	
+<div class="modal fade" id="listarAutor" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Listar autores</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Autor 1</option>
+									<option>Autor 2</option>
+									<option>Autor 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Endereco</label><input
+									class="form-control" name="nomeCliente" type="text"
+									required="required" disabled>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Livros</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Livro 1</option>
+									<option>Livro 2</option>
+									<option>Livro 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>							
+						</div>
+					</div><br>
+													
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Voltar</button>
+							<button type="submit" class="btn btn-warning">Atualizar</button>
+						</div>
+					</div>				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<!-- MODAL REMOVER AUTOR-->	
+<div class="modal fade" id="removerAutor" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Remover autor</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Autor 1</option>
+									<option>Autor 2</option>
+									<option>Autor 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Endereco</label><input
+									class="form-control" name="nomeCliente" type="text"
+									required="required" disabled>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Livros</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Livro 1</option>
+									<option>Livro 2</option>
+									<option>Livro 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>							
+						</div>
+					</div><br>
+													
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Voltar</button>
+							<button type="submit" class="btn btn-warning">Remover autor</button>
+						</div>
+					</div>				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
 
 
+<!-- EDITORAS -->
+<!-- MODAL CADASTRAR EDITORA -->	
+<div class="modal fade" id="cadastrarEditora" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Cadastrar editora</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <input
+									class="form-control" name="nomeCliente" type="text"
+									required="required">
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Endereco</label><input
+									class="form-control" name="nomeCliente" type="text"
+									required="required">
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Livros</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Livro 1</option>
+									<option>Livro 2</option>
+									<option>Livro 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>							
+						</div>
+					</div><br>
+													
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Cancelar</button>
+							<button type="submit" class="btn btn-warning">Cadastrar Editora</button>
+						</div>
+					</div>				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<!-- MODAL LISTAR EDITORAS -->	
+<div class="modal fade" id="listarEditora" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Listar editoras</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Autor 1</option>
+									<option>Autor 2</option>
+									<option>Autor 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Endereco</label><input
+									class="form-control" name="nomeCliente" type="text"
+									required="required" disabled>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Livros</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Livro 1</option>
+									<option>Livro 2</option>
+									<option>Livro 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>							
+						</div>
+					</div><br>
+													
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Voltar</button>
+							<button type="submit" class="btn btn-warning">Atualizar</button>
+						</div>
+					</div>				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
+
+<!-- MODAL REMOVER EDITORA -->	
+<div class="modal fade" id="removerEditora" tabindex="-1" role="dialog"
+	aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal-dialog" role="document">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Remover editora</h5>
+
+			</div>
+			<div class="modal-body">
+				<form method="POST"	action="#">					
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-6">
+								<label for="nome">Nome</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Autor 1</option>
+									<option>Autor 2</option>
+									<option>Autor 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>
+							<div class="col-md-6">
+								<label for="endereco">Endereco</label><input
+									class="form-control" name="nomeCliente" type="text"
+									required="required" disabled>
+							</div>
+						</div>
+					</div><br>
+					<div class="form-group">
+						<div class="form-row">
+							<div class="col-md-3">
+								<label for="idade">Livros</label> <select
+									class="form-control" required="required" name="livro">
+									<option selected></option>
+									<option>Livro 1</option>
+									<option>Livro 2</option>
+									<option>Livro 3</option>
+									<option>. . .</option>									
+								</select>
+							</div>							
+						</div>
+					</div><br>
+													
+					<div class="form-group">
+						<div class="modal-footer">
+							<button type="reset" class="btn btn-secondary">Redefinir</button>
+							<button type="button" class="btn btn-secondary"
+								data-dismiss="modal">Voltar</button>
+							<button type="submit" class="btn btn-warning">Remover editora</button>
+						</div>
+					</div>				
+				</form>
+			</div>
+		</div>
+	</div>
+	
+</div>
 
 
 <!-- jQuery -->
