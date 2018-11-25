@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-    pageEncoding="ISO-8859-1"%>
+	pageEncoding="ISO-8859-1"%>
 <%@	page import="java.sql.Connection"%>
 <%@	page import="java.sql.ResultSet"%>
 <%@	page import="java.sql.SQLException"%>
 <%@	page import="java.sql.Statement"%>
-<%@ page import="livraria.util.ConectaDB" %>
-	
+<%@ page import="livraria.util.ConectaDB"%>
+
 
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -50,798 +50,792 @@
 			<small id="emailHelp" class="form-text text-muted">Selecione
 				uma opção abaixo</small>
 		</div>
-		<button class="btn btn-primary" data-toggle="modal" data-target="#cadastrarLivro">Cadastrar Livros</button>
-		<button class="btn btn-primary" data-toggle="modal" data-target="#listarLivro">Listar Livros</button>
-		<button class="btn btn-primary" data-toggle="modal" data-target="#removerLivro">Remover Livros</button><br><br>
-		<button class="btn btn-success" data-toggle="modal" data-target="#cadastrarAutor">Cadastrar Autores</button>
-		<button class="btn btn-success" data-toggle="modal" data-target="#listarAutor">Listar Autores</button>
-		<button class="btn btn-success" data-toggle="modal" data-target="#removerAutor">Remover Autores</button><br><br>
-		<button class="btn btn-warning" data-toggle="modal" data-target="#cadastrarEditora">Cadastrar Editoras</button>
-		<button class="btn btn-warning" data-toggle="modal" data-target="#listarEditora">Listar Editoras</button>
-		<button class="btn btn-warning" data-toggle="modal" data-target="#removerEditora">Remover Editoras</button><br><br>
-		<button class="btn btn-danger" data-toggle="modal" data-target="#realizarVenda">Realizar Vendas</button>
+		<button class="btn btn-primary" data-toggle="modal"
+			data-target="#cadastrarLivro">Cadastrar Livros</button>
+		<button class="btn btn-primary" data-toggle="modal"
+			data-target="#listarLivro">Listar Livros</button>
+		<button class="btn btn-primary" data-toggle="modal"
+			data-target="#removerLivro">Remover Livros</button>
+		<br> <br>
+		<button class="btn btn-success" data-toggle="modal"
+			data-target="#cadastrarAutor">Cadastrar Autores</button>
+		<button class="btn btn-success" data-toggle="modal"
+			data-target="#listarAutor">Listar Autores</button>
+		<button class="btn btn-success" data-toggle="modal"
+			data-target="#removerAutor">Remover Autores</button>
+		<br> <br>
+		<button class="btn btn-warning" data-toggle="modal"
+			data-target="#cadastrarEditora">Cadastrar Editoras</button>
+		<button class="btn btn-warning" data-toggle="modal"
+			data-target="#listarEditora">Listar Editoras</button>
+		<button class="btn btn-warning" data-toggle="modal"
+			data-target="#removerEditora">Remover Editoras</button>
+		<br> <br>
+		<button class="btn btn-danger" data-toggle="modal"
+			data-target="#realizarVenda">Realizar Vendas</button>
 
 	</div>
 
-<!-- MODAL REALIZAR VENDA -->	
-<div class="modal fade" id="realizarVenda" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Realizar venda</h5>
+	<!-- MODAL REALIZAR VENDA -->
+	<div class="modal fade" id="realizarVenda" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Realizar venda</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="../controller/membros/cadastrarMembro.php">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome do cliente</label> <input
-									class="form-control" name="nomeCliente" type="text"
-									required="required">
-							</div>
-							<div class="col-md-6">
-								<label for="endereco">Endereço do cliente</label> <input
-									class="form-control" name="enderecoCliente" type="text">
-							</div>
-						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Livro</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Dom Quixote</option>
-									<option>O Conde de Monte Cristo</option>
-									<option>Um Conto de Duas Cidades</option>
-									<option>O Pequeno Principe</option>
-									<option>O Senhor dos Aneis</option>
-								</select>
-							</div>
-							<div class="col-md-3">
-								<label for="autor">Autor</label> <input
-									class="form-control" name="Autor" type="text" disabled>
-							</div>
-							
-							<div class="col-md-6">
-								<label for="editora">Editora</label> <input
-									class="form-control" name="editora" type="text" disabled>
+				</div>
+				<div class="modal-body">
+					<form method="POST"
+						action="../controller/membros/cadastrarMembro.php">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome do cliente</label> <input
+										class="form-control" name="nomeCliente" type="text"
+										required="required">
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Endereço do cliente</label> <input
+										class="form-control" name="enderecoCliente" type="text">
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">				
-								<label for="preco">Preço</label> <input class="form-control"
-								name="preco" type="text" placeholder="R$" disabled>
-							</div>
-						<div class="form-group col-md-6">
-							<label for="quantidade">Quantidade</label>
-							<select	class="form-control" required="required" name="quantidade">
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>							
-							</select>
-						</div>
-						</div>
-					</div>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="form-group col-md-6">
-								<label for="formaPagamento">Forma de pagamento</label>
-								<select	class="form-control" required="required" name="pagamento">
-									<option>A vista</option>
-									<option>2x sem juros</option>
-									<option>3x sem juros</option>							
-								</select>
-							</div>
-							<div class="form-group col-md-6">
-								<label for="quantidade">Situação</label><input type="text" class="form-control" id=""
-								placeholder="LIVRO EM ESTOQUE" name="disponivel" disabled>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Livro</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Dom Quixote</option>
+										<option>O Conde de Monte Cristo</option>
+										<option>Um Conto de Duas Cidades</option>
+										<option>O Pequeno Principe</option>
+										<option>O Senhor dos Aneis</option>
+									</select>
+								</div>
+								<div class="col-md-3">
+									<label for="autor">Autor</label> <input class="form-control"
+										name="Autor" type="text" disabled>
+								</div>
+
+								<div class="col-md-6">
+									<label for="editora">Editora</label> <input
+										class="form-control" name="editora" type="text" disabled>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-warning">Cadastrar venda</button>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="preco">Preço</label> <input class="form-control"
+										name="preco" type="text" placeholder="R$" disabled>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="quantidade">Quantidade</label> <select
+										class="form-control" required="required" name="quantidade">
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								</div>
+							</div>
 						</div>
-					</div>
-				
-				</form>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="form-group col-md-6">
+									<label for="formaPagamento">Forma de pagamento</label> <select
+										class="form-control" required="required" name="pagamento">
+										<option>A vista</option>
+										<option>2x sem juros</option>
+										<option>3x sem juros</option>
+									</select>
+								</div>
+								<div class="form-group col-md-6">
+									<label for="quantidade">Situação</label><input type="text"
+										class="form-control" id="" placeholder="LIVRO EM ESTOQUE"
+										name="disponivel" disabled>
+								</div>
+							</div>
+						</div>
+						<br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-warning">Cadastrar
+									venda</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
 
-<!-- LIVROS -->
-<!-- MODAL CADASTRAR LIVRO -->	
-<div class="modal fade" id="cadastrarLivro" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Cadastrar livro</h5>
+	<!-- LIVROS -->
+	<!-- MODAL CADASTRAR LIVRO -->
+	<div class="modal fade" id="cadastrarLivro" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Cadastrar livro</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action=livro>					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <input
-									class="form-control" name="nome" type="text"
-									required="required">
-							</div>
-							<div class="col-md-6">
-								<label for="endereco">Autor</label><select class="form-control" required="required" name="autor">
-									<option selected="selected"></option>
-									<% 
-									String autor;
-									Connection conn;
-									conn = ConectaDB.getConnection();
+				</div>
+				<div class="modal-body">
+					<form method="POST" action=livro>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <input class="form-control"
+										name="nome" type="text" required="required">
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Autor</label><select class="form-control"
+										required="required" name="autor">
+										<option selected="selected"></option>
+										<%
+											String autor;
+											Connection conn;
+											conn = ConectaDB.getConnection();
 
-									String sql = "SELECT nome FROM autor";
+											String sql = "SELECT nome FROM autor";
 
-									Statement stmt = conn.createStatement();
-									ResultSet rs = stmt.executeQuery(sql);
-									while(rs.next()) {
-										autor=rs.getString("nome");
-									%>
-									<option><%=autor%></option>
-									<%
-									}
-									rs.close();
-									stmt.close();
-									ConectaDB.close(conn);
-									%>
-								</select>								
-							</div>
-						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Editora</label> <select class="form-control" required="required" name="editora">
-									<option selected="selected"></option>
-									<% 
-									String editora;
-									
-									conn = ConectaDB.getConnection();
-
-									sql = "SELECT nome FROM editora";
-
-									stmt = conn.createStatement();
-									rs = stmt.executeQuery(sql);
-									while(rs.next()) {
-										editora=rs.getString("nome");
-									%>
-									<option><%=editora%></option>
-									<%
-									}
-									rs.close();
-									stmt.close();
-									ConectaDB.close(conn);
-									%>
-								</select>
-							</div>
-							<div class="col-md-3">
-								<label for="autor">Area</label> <select class="form-control" required="required" name="area">
-									<option selected="selected"></option>
-									<% 
-									String area;
-									
-									conn = ConectaDB.getConnection();
-
-									sql = "SELECT nome FROM area";
-
-									stmt = conn.createStatement();
-									rs = stmt.executeQuery(sql);
-									while(rs.next()) {
-										area=rs.getString("nome");
-									%>
-									<option><%=area%></option>
-									<%
-									}
-									rs.close();
-									stmt.close();
-									ConectaDB.close(conn);
-									%>
-								</select>
-							</div>
-							
-							<div class="col-md-6">
-								<label for="editora">Quantidade</label> <input
-									class="form-control" name="quantidade" type="number">
+											Statement stmt = conn.createStatement();
+											ResultSet rs = stmt.executeQuery(sql);
+											while (rs.next()) {
+												autor = rs.getString("nome");
+										%>
+										<option><%=autor%></option>
+										<%
+											}
+											rs.close();
+											stmt.close();
+											ConectaDB.close(conn);
+										%>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">				
-								<label for="preco">Preço</label> <input class="form-control"
-								name="preco" type="text" placeholder="R$">
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Editora</label> <select class="form-control"
+										required="required" name="editora">
+										<option selected="selected"></option>
+										<%
+											String editora;
+
+											conn = ConectaDB.getConnection();
+
+											sql = "SELECT nome FROM editora";
+
+											stmt = conn.createStatement();
+											rs = stmt.executeQuery(sql);
+											while (rs.next()) {
+												editora = rs.getString("nome");
+										%>
+										<option><%=editora%></option>
+										<%
+											}
+											rs.close();
+											stmt.close();
+											ConectaDB.close(conn);
+										%>
+									</select>
+								</div>
+								<div class="col-md-3">
+									<label for="autor">Area</label> <select class="form-control"
+										required="required" name="area">
+										<option selected="selected"></option>
+										<%
+											String area;
+
+											conn = ConectaDB.getConnection();
+
+											sql = "SELECT nome FROM area";
+
+											stmt = conn.createStatement();
+											rs = stmt.executeQuery(sql);
+											while (rs.next()) {
+												area = rs.getString("nome");
+										%>
+										<option><%=area%></option>
+										<%
+											}
+											rs.close();
+											stmt.close();
+											ConectaDB.close(conn);
+										%>
+									</select>
+								</div>
+
+								<div class="col-md-6">
+									<label for="editora">Quantidade</label> <input
+										class="form-control" name="quantidade" type="number">
+								</div>
 							</div>
-						
 						</div>
-					</div>
-					<br><br>
-					
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-warning">Cadastrar livro</button>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="preco">Preço</label> <input class="form-control"
+										name="preco" type="text" placeholder="R$">
+								</div>
+
+							</div>
 						</div>
-					</div>
-				
-				</form>
+						<br> <br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-warning">Cadastrar
+									livro</button>
+							</div>
+						</div>
+
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
-<!-- MODAL LISTAR LIVRO -->	
-<div class="modal fade" id="listarLivro" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Listar livro</h5>
+	<!-- MODAL LISTAR LIVRO -->
+	<div class="modal fade" id="listarLivro" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Listar livro</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Dom Quixote</option>
-									<option>O Conde de Monte Cristo</option>
-									<option>Um Conto de Duas Cidades</option>
-									<option>O Pequeno Principe</option>
-									<option>O Senhor dos Aneis</option>									
-								</select>
-							</div>
-							<div class="col-md-6">
-								<label for="endereco">Autor</label><select
-									class="form-control" required="required" name="livro" disabled>
-									<option selected></option>
-									<option>Fabio de Castro</option>
-									<option>Vitoria Ferreira</option>
-									<option>Monteiro Lobato</option>									
-								</select>
-							</div>
-						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Editora</label> <select
-									class="form-control" required="required" name="livro" disabled>
-									<option selected></option>
-									<option>Scienza</option>
-									<option>Monte Vale</option>
-									<option>Starbook</option>									
-								</select>
-							</div>
-							<div class="col-md-3">
-								<label for="autor">Area</label> <select
-									class="form-control" required="required" name="livro" disabled>
-									<option selected></option>
-									<option>Contos</option>
-									<option>Fabula</option>
-									<option>Suspense</option>									
-								</select>
-							</div>
-							
-							<div class="col-md-6">
-								<label for="editora">Quantidade</label> <input
-									class="form-control" name="editora" type="number" disabled>
-							</div>
-						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">				
-								<label for="preco">Preço</label> <input class="form-control"
-								name="preco" type="text" placeholder="R$" disabled>
-							</div>
-						<div class="form-group col-md-6">
-							<label for="quantidade">Quantidade</label>
-							<select	class="form-control" required="required" name="quantidade" disabled>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>							
-							</select>
-						</div>
-						</div>
-					</div>
-					<br>
-					
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Voltar</button>
-							<button type="submit" class="btn btn-warning" disabled>Atualizar</button>
-						</div>
-					</div>
-				
-				</form>
+				</div>
+				<div class="modal-body">
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nome</th>
+								<th scope="col">Autor</th>
+								<th scope="col">Editora</th>
+								<th scope="col">Area</th>
+								<th scope="col">Preco</th>
+								<th scope="col">Quantidade</th>
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								int idLivro;
+								String nomeLivro;
+								int autorLivro;
+								int editoraLivro;
+								int areaLivro;
+								String precoLivro;
+								int quantidadeLivro;
+
+								conn = ConectaDB.getConnection();
+
+								sql = "SELECT * FROM livro";
+
+								stmt = conn.createStatement();
+								rs = stmt.executeQuery(sql);
+								while (rs.next()) {
+									idLivro = rs.getInt("id");
+									nomeLivro = rs.getString("nome");
+									autorLivro = rs.getInt("autor");
+									editoraLivro = rs.getInt("editora");
+									areaLivro = rs.getInt("area");
+									precoLivro = rs.getString("preco");
+									quantidadeLivro = rs.getInt("quantidade");
+							%>
+							<tr>
+								<th scope="row"><%=idLivro%></th>
+								<td><%=nomeLivro%></td>
+								<td><%=autorLivro%></td>
+								<td><%=editoraLivro%></td>
+								<td><%=areaLivro%></td>
+								<td><%=precoLivro%></td>
+								<td><%=quantidadeLivro%></td>
+							</tr>
+							<%
+								}
+								stmt.close();
+								rs.close();
+								ConectaDB.close(conn);
+							%>
+						</tbody>
+					</table>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
-<!-- MODAL LISTAR LIVRO -->	
-<div class="modal fade" id="removerLivro" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Remover livro</h5>
+	<!-- MODAL REMOVER LIVRO -->
+	<div class="modal fade" id="removerLivro" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Remover livro</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Dom Quixote</option>
-									<option>O Conde de Monte Cristo</option>
-									<option>Um Conto de Duas Cidades</option>
-									<option>O Pequeno Principe</option>
-									<option>O Senhor dos Aneis</option>									
-								</select>
-							</div>
-							<div class="col-md-6">
-								<label for="endereco">Autor</label><select
-									class="form-control" required="required" name="livro" disabled>
-									<option selected></option>
-									<option>Fabio de Castro</option>
-									<option>Vitoria Ferreira</option>
-									<option>Monteiro Lobato</option>									
-								</select>
-							</div>
-						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Editora</label> <select
-									class="form-control" required="required" name="livro" disabled>
-									<option selected></option>
-									<option>Scienza</option>
-									<option>Monte Vale</option>
-									<option>Starbook</option>									
-								</select>
-							</div>
-							<div class="col-md-3">
-								<label for="autor">Area</label> <select
-									class="form-control" required="required" name="livro" disabled>
-									<option selected></option>
-									<option>Contos</option>
-									<option>Fabula</option>
-									<option>Suspense</option>									
-								</select>
-							</div>
-							
-							<div class="col-md-6">
-								<label for="editora">Quantidade</label> <input
-									class="form-control" name="editora" type="number" disabled>
+				</div>
+				<div class="modal-body">
+					<form method="GET" action="livro">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <select class="form-control"
+										required="required" name="nome">
+										<option selected="selected"></option>
+										<%
+											String livroRemover;
+
+											conn = ConectaDB.getConnection();
+
+											sql = "SELECT nome FROM livro";
+
+											stmt = conn.createStatement();
+											rs = stmt.executeQuery(sql);
+											while (rs.next()) {
+												livroRemover = rs.getString("nome");
+										%>
+										<option><%=livroRemover%></option>
+										<%
+											}
+											rs.close();
+											stmt.close();
+											ConectaDB.close(conn);
+										%>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">				
-								<label for="preco">Preço</label> <input class="form-control"
-								name="preco" type="text" placeholder="R$" disabled>
+						<br>
+						<!-- <div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="preco">Preço</label> <input class="form-control"
+										name="preco" type="text" placeholder="R$" disabled>
+								</div>
+								<br>
+								<div class="form-group col-md-6">
+									<label for="quantidade">Quantidade</label> <select
+										class="form-control" required="required" name="quantidade"
+										disabled>
+										<option>1</option>
+										<option>2</option>
+										<option>3</option>
+									</select>
+								</div>
 							</div>
-						<div class="form-group col-md-6">
-							<label for="quantidade">Quantidade</label>
-							<select	class="form-control" required="required" name="quantidade" disabled>
-							<option>1</option>
-							<option>2</option>
-							<option>3</option>							
-							</select>
+						</div> -->
+						<br> <br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Voltar</button>
+								<button type="submit" class="btn btn-warning">Remover</button>
+							</div>
 						</div>
-						</div>
-					</div>
-					<br>
-					
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Voltar</button>
-							<button type="submit" class="btn btn-warning" disabled>Remover</button>
-						</div>
-					</div>
-				
-				</form>
+
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
 
-<!-- AUTORES -->
-<!-- MODAL CADASTRAR AUTOR -->	
-<div class="modal fade" id="cadastrarAutor" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Cadastrar autor</h5>
+	<!-- AUTORES -->
+	<!-- MODAL CADASTRAR AUTOR -->
+	<div class="modal fade" id="cadastrarAutor" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Cadastrar autor</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <input
-									class="form-control" name="nomeCliente" type="text"
-									required="required">
-							</div>
-							<div class="col-md-6">
-								<label for="endereco">Endereco</label><input
-									class="form-control" name="nomeCliente" type="text"
-									required="required">
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="#">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <input class="form-control"
+										name="nomeCliente" type="text" required="required">
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Endereco</label><input
+										class="form-control" name="nomeCliente" type="text"
+										required="required">
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Livros</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Livro 1</option>
-									<option>Livro 2</option>
-									<option>Livro 3</option>
-									<option>. . .</option>									
-								</select>
-							</div>							
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Livros</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Livro 1</option>
+										<option>Livro 2</option>
+										<option>Livro 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
+							</div>
 						</div>
-					</div><br>
-													
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-warning">Cadastrar Autor</button>
+						<br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-warning">Cadastrar
+									Autor</button>
+							</div>
 						</div>
-					</div>				
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
-<!-- MODAL LISTAR AUTOR -->	
-<div class="modal fade" id="listarAutor" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Listar autores</h5>
+	<!-- MODAL LISTAR AUTOR -->
+	<div class="modal fade" id="listarAutor" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Listar autores</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Autor 1</option>
-									<option>Autor 2</option>
-									<option>Autor 3</option>
-									<option>. . .</option>									
-								</select>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="#">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Autor 1</option>
+										<option>Autor 2</option>
+										<option>Autor 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Endereco</label><input
+										class="form-control" name="nomeCliente" type="text"
+										required="required" disabled>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="endereco">Endereco</label><input
-									class="form-control" name="nomeCliente" type="text"
-									required="required" disabled>
+						</div>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Livros</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Livro 1</option>
+										<option>Livro 2</option>
+										<option>Livro 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Livros</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Livro 1</option>
-									<option>Livro 2</option>
-									<option>Livro 3</option>
-									<option>. . .</option>									
-								</select>
-							</div>							
+						<br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Voltar</button>
+								<button type="submit" class="btn btn-warning">Atualizar</button>
+							</div>
 						</div>
-					</div><br>
-													
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Voltar</button>
-							<button type="submit" class="btn btn-warning">Atualizar</button>
-						</div>
-					</div>				
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
-<!-- MODAL REMOVER AUTOR-->	
-<div class="modal fade" id="removerAutor" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Remover autor</h5>
+	<!-- MODAL REMOVER AUTOR-->
+	<div class="modal fade" id="removerAutor" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Remover autor</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Autor 1</option>
-									<option>Autor 2</option>
-									<option>Autor 3</option>
-									<option>. . .</option>									
-								</select>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="#">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Autor 1</option>
+										<option>Autor 2</option>
+										<option>Autor 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Endereco</label><input
+										class="form-control" name="nomeCliente" type="text"
+										required="required" disabled>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="endereco">Endereco</label><input
-									class="form-control" name="nomeCliente" type="text"
-									required="required" disabled>
+						</div>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Livros</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Livro 1</option>
+										<option>Livro 2</option>
+										<option>Livro 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Livros</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Livro 1</option>
-									<option>Livro 2</option>
-									<option>Livro 3</option>
-									<option>. . .</option>									
-								</select>
-							</div>							
+						<br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Voltar</button>
+								<button type="submit" class="btn btn-warning">Remover
+									autor</button>
+							</div>
 						</div>
-					</div><br>
-													
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Voltar</button>
-							<button type="submit" class="btn btn-warning">Remover autor</button>
-						</div>
-					</div>				
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
 
-<!-- EDITORAS -->
-<!-- MODAL CADASTRAR EDITORA -->	
-<div class="modal fade" id="cadastrarEditora" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Cadastrar editora</h5>
+	<!-- EDITORAS -->
+	<!-- MODAL CADASTRAR EDITORA -->
+	<div class="modal fade" id="cadastrarEditora" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Cadastrar
+						editora</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <input
-									class="form-control" name="nomeCliente" type="text"
-									required="required">
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="#">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <input class="form-control"
+										name="nomeCliente" type="text" required="required">
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Endereco</label><input
+										class="form-control" name="nomeCliente" type="text"
+										required="required">
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="endereco">Endereco</label><input
-									class="form-control" name="nomeCliente" type="text"
-									required="required">
+						</div>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Livros</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Livro 1</option>
+										<option>Livro 2</option>
+										<option>Livro 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Livros</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Livro 1</option>
-									<option>Livro 2</option>
-									<option>Livro 3</option>
-									<option>. . .</option>									
-								</select>
-							</div>							
+						<br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Cancelar</button>
+								<button type="submit" class="btn btn-warning">Cadastrar
+									Editora</button>
+							</div>
 						</div>
-					</div><br>
-													
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Cancelar</button>
-							<button type="submit" class="btn btn-warning">Cadastrar Editora</button>
-						</div>
-					</div>				
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
-<!-- MODAL LISTAR EDITORAS -->	
-<div class="modal fade" id="listarEditora" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Listar editoras</h5>
+	<!-- MODAL LISTAR EDITORAS -->
+	<div class="modal fade" id="listarEditora" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Listar editoras</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Autor 1</option>
-									<option>Autor 2</option>
-									<option>Autor 3</option>
-									<option>. . .</option>									
-								</select>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="#">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Autor 1</option>
+										<option>Autor 2</option>
+										<option>Autor 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Endereco</label><input
+										class="form-control" name="nomeCliente" type="text"
+										required="required" disabled>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="endereco">Endereco</label><input
-									class="form-control" name="nomeCliente" type="text"
-									required="required" disabled>
+						</div>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Livros</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Livro 1</option>
+										<option>Livro 2</option>
+										<option>Livro 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Livros</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Livro 1</option>
-									<option>Livro 2</option>
-									<option>Livro 3</option>
-									<option>. . .</option>									
-								</select>
-							</div>							
+						<br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Voltar</button>
+								<button type="submit" class="btn btn-warning">Atualizar</button>
+							</div>
 						</div>
-					</div><br>
-													
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Voltar</button>
-							<button type="submit" class="btn btn-warning">Atualizar</button>
-						</div>
-					</div>				
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
-<!-- MODAL REMOVER EDITORA -->	
-<div class="modal fade" id="removerEditora" tabindex="-1" role="dialog"
-	aria-labelledby="exampleModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
-		<div class="modal-content">
-			<div class="modal-header">
-				<h5 class="modal-title" id="exampleModalLabel">Remover editora</h5>
+	<!-- MODAL REMOVER EDITORA -->
+	<div class="modal fade" id="removerEditora" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog" role="document">
+			<div class="modal-content">
+				<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Remover editora</h5>
 
-			</div>
-			<div class="modal-body">
-				<form method="POST"	action="#">					
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-6">
-								<label for="nome">Nome</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Autor 1</option>
-									<option>Autor 2</option>
-									<option>Autor 3</option>
-									<option>. . .</option>									
-								</select>
+				</div>
+				<div class="modal-body">
+					<form method="POST" action="#">
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-6">
+									<label for="nome">Nome</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Autor 1</option>
+										<option>Autor 2</option>
+										<option>Autor 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
+								<div class="col-md-6">
+									<label for="endereco">Endereco</label><input
+										class="form-control" name="nomeCliente" type="text"
+										required="required" disabled>
+								</div>
 							</div>
-							<div class="col-md-6">
-								<label for="endereco">Endereco</label><input
-									class="form-control" name="nomeCliente" type="text"
-									required="required" disabled>
+						</div>
+						<br>
+						<div class="form-group">
+							<div class="form-row">
+								<div class="col-md-3">
+									<label for="idade">Livros</label> <select class="form-control"
+										required="required" name="livro">
+										<option selected></option>
+										<option>Livro 1</option>
+										<option>Livro 2</option>
+										<option>Livro 3</option>
+										<option>. . .</option>
+									</select>
+								</div>
 							</div>
 						</div>
-					</div><br>
-					<div class="form-group">
-						<div class="form-row">
-							<div class="col-md-3">
-								<label for="idade">Livros</label> <select
-									class="form-control" required="required" name="livro">
-									<option selected></option>
-									<option>Livro 1</option>
-									<option>Livro 2</option>
-									<option>Livro 3</option>
-									<option>. . .</option>									
-								</select>
-							</div>							
+						<br>
+
+						<div class="form-group">
+							<div class="modal-footer">
+								<button type="reset" class="btn btn-secondary">Redefinir</button>
+								<button type="button" class="btn btn-secondary"
+									data-dismiss="modal">Voltar</button>
+								<button type="submit" class="btn btn-warning">Remover
+									editora</button>
+							</div>
 						</div>
-					</div><br>
-													
-					<div class="form-group">
-						<div class="modal-footer">
-							<button type="reset" class="btn btn-secondary">Redefinir</button>
-							<button type="button" class="btn btn-secondary"
-								data-dismiss="modal">Voltar</button>
-							<button type="submit" class="btn btn-warning">Remover editora</button>
-						</div>
-					</div>				
-				</form>
+					</form>
+				</div>
 			</div>
 		</div>
+
 	</div>
-	
-</div>
 
 
-<!-- jQuery -->
-<script src="vendor/jquery/jquery.min.js"></script>
+	<!-- jQuery -->
+	<script src="vendor/jquery/jquery.min.js"></script>
 
-<!-- Bootstrap Core JavaScript -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 
 </body>
 </html>

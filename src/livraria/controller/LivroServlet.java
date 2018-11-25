@@ -51,6 +51,24 @@ public class LivroServlet extends HttpServlet {
 
 		ConectaDB.close(conn);
 	}
+	
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		String nome = req.getParameter("nome");
+		
+		conn = ConectaDB.getConnection();
+		String sql = "DELETE FROM livro WHERE nome='"+nome+"'";
+		try {
+			PreparedStatement stmt = conn.prepareStatement(sql);
+			stmt.execute();
+			stmt.close();
+			resp.sendRedirect("/trabalhofinaldw2-livraria/index.jsp");
+		} catch (SQLException e) {			
+			e.printStackTrace();
+		}
+		
+		ConectaDB.close(conn);
+	}
 
 	//retorna o id correspondente ao autor selecionado
 	protected int buscaAutorFK(String nomeAutor) throws SQLException {
