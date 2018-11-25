@@ -9,4 +9,16 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+
+  <!-- mapeando servlets -->
+  <!-- <servlet>
+  	<servlet-name>logon</servlet-name>
+  	<servlet-class>livraria.controller.LogonServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>logon</servlet-name>
+  	<url-pattern>/logon</url-pattern>
+  </servlet-mapping> -->
+
+
 </web-app>

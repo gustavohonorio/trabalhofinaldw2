@@ -51,4 +51,10 @@ public class Livro {
 		this.editora = editora;
 	}
 	
+	//persist
+	public void persist() {
+		
+	}
+	
+	
 }
