@@ -29,7 +29,6 @@ public class LivroServlet extends HttpServlet {
 		int quantidade = Integer.parseInt(req.getParameter("quantidade"));
 		String preco = req.getParameter("preco");
 
-				
 		conn = ConectaDB.getConnection();
 		String sql = "INSERT INTO livro (nome,autor,editora,area,quantidade,preco) VALUES (?,?,?,?,?,?)";
 
@@ -51,31 +50,31 @@ public class LivroServlet extends HttpServlet {
 
 		ConectaDB.close(conn);
 	}
-	
+
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String nome = req.getParameter("nome");
-		
+
 		conn = ConectaDB.getConnection();
-		String sql = "DELETE FROM livro WHERE nome='"+nome+"'";
+		String sql = "DELETE FROM livro WHERE nome='" + nome + "'";
 		try {
 			PreparedStatement stmt = conn.prepareStatement(sql);
 			stmt.execute();
 			stmt.close();
 			resp.sendRedirect("/trabalhofinaldw2-livraria/index.jsp");
-		} catch (SQLException e) {			
+		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-		
+
 		ConectaDB.close(conn);
 	}
 
-	//retorna o id correspondente ao autor selecionado
+	// retorna o id correspondente ao autor selecionado
 	protected int buscaAutorFK(String nomeAutor) throws SQLException {
 		conn = ConectaDB.getConnection();
-		
+
 		int autorFK;
-		
+
 		String sql = "SELECT id FROM autor WHERE nome='" + nomeAutor + "'";
 
 		Statement stmt = conn.createStatement();
@@ -85,37 +84,37 @@ public class LivroServlet extends HttpServlet {
 		} else
 			return 0;
 	}
-	
-	//retorna o id correspondente ao editora selecionado
-		protected int buscaEditoraFK(String nomeEditora) throws SQLException {
-			conn = ConectaDB.getConnection();
-			
-			int editoraFK;
-			
-			String sql = "SELECT id FROM editora WHERE nome='" + nomeEditora + "'";
 
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			if (rs.next()) {
-				return editoraFK = rs.getInt("id");
-			} else
-				return 0;
-		}
-		
-		//retorna o id correspondente ao area selecionado
-		protected int buscaAreaFK(String nomeArea) throws SQLException {
-			conn = ConectaDB.getConnection();
-			
-			int areaFK;
-			
-			String sql = "SELECT id FROM area WHERE nome='" + nomeArea + "'";
+	// retorna o id correspondente ao editora selecionado
+	protected int buscaEditoraFK(String nomeEditora) throws SQLException {
+		conn = ConectaDB.getConnection();
 
-			Statement stmt = conn.createStatement();
-			ResultSet rs = stmt.executeQuery(sql);
-			if (rs.next()) {
-				return areaFK = rs.getInt("id");
-			} else
-				return 0;
-		}
+		int editoraFK;
+
+		String sql = "SELECT id FROM editora WHERE nome='" + nomeEditora + "'";
+
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		if (rs.next()) {
+			return editoraFK = rs.getInt("id");
+		} else
+			return 0;
+	}
+
+	// retorna o id correspondente ao area selecionado
+	protected int buscaAreaFK(String nomeArea) throws SQLException {
+		conn = ConectaDB.getConnection();
+
+		int areaFK;
+
+		String sql = "SELECT id FROM area WHERE nome='" + nomeArea + "'";
+
+		Statement stmt = conn.createStatement();
+		ResultSet rs = stmt.executeQuery(sql);
+		if (rs.next()) {
+			return areaFK = rs.getInt("id");
+		} else
+			return 0;
+	}
 
 }

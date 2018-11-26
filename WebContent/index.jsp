@@ -5,8 +5,14 @@
 <%@	page import="java.sql.SQLException"%>
 <%@	page import="java.sql.Statement"%>
 <%@ page import="livraria.util.ConectaDB"%>
-
-
+<%@ page import="livraria.controller.LivroServlet" %>
+<!-- variaveis "globais" -->
+<% 
+Connection conn;
+String sql;
+Statement stmt;
+ResultSet rs;
+%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html lang="pt-br">
@@ -107,15 +113,29 @@
 								<div class="col-md-3">
 									<label for="idade">Livro</label> <select class="form-control"
 										required="required" name="livro">
-										<option selected></option>
-										<option>Dom Quixote</option>
-										<option>O Conde de Monte Cristo</option>
-										<option>Um Conto de Duas Cidades</option>
-										<option>O Pequeno Principe</option>
-										<option>O Senhor dos Aneis</option>
+										<option selected="selected"></option>
+										<%
+											String pesqLivro;
+
+											conn = ConectaDB.getConnection();
+
+											sql = "SELECT nome FROM livro";
+
+											stmt = conn.createStatement();
+											rs = stmt.executeQuery(sql);
+											while (rs.next()) {
+												pesqLivro = rs.getString("nome");
+										%>
+										<option><%=pesqLivro%></option>
+										<%
+											}
+											rs.close();
+											stmt.close();
+											ConectaDB.close(conn);
+										%>
 									</select>
 								</div>
-								<div class="col-md-3">
+								<!-- <div class="col-md-3">
 									<label for="autor">Autor</label> <input class="form-control"
 										name="Autor" type="text" disabled>
 								</div>
@@ -123,7 +143,7 @@
 								<div class="col-md-6">
 									<label for="editora">Editora</label> <input
 										class="form-control" name="editora" type="text" disabled>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<br>
@@ -153,11 +173,11 @@
 										<option>3x sem juros</option>
 									</select>
 								</div>
-								<div class="form-group col-md-6">
+								<!-- <div class="form-group col-md-6">
 									<label for="quantidade">Situação</label><input type="text"
 										class="form-control" id="" placeholder="LIVRO EM ESTOQUE"
 										name="disponivel" disabled>
-								</div>
+								</div> -->
 							</div>
 						</div>
 						<br>
@@ -204,13 +224,13 @@
 										<option selected="selected"></option>
 										<%
 											String autor;
-											Connection conn;
+											
 											conn = ConectaDB.getConnection();
 
-											String sql = "SELECT nome FROM autor";
+											sql = "SELECT nome FROM autor";
 
-											Statement stmt = conn.createStatement();
-											ResultSet rs = stmt.executeQuery(sql);
+											stmt = conn.createStatement();
+											rs = stmt.executeQuery(sql);
 											while (rs.next()) {
 												autor = rs.getString("nome");
 										%>
@@ -340,12 +360,14 @@
 							<%
 								int idLivro;
 								String nomeLivro;
-								int autorLivro;
-								int editoraLivro;
-								int areaLivro;
+								int autorLivroFK;
+								/* String autorLivroNome; */
+								int editoraLivroFK;
+								int areaLivroFK;
 								String precoLivro;
 								int quantidadeLivro;
-
+								LivroServlet l = new LivroServlet();
+								
 								conn = ConectaDB.getConnection();
 
 								sql = "SELECT * FROM livro";
@@ -355,18 +377,18 @@
 								while (rs.next()) {
 									idLivro = rs.getInt("id");
 									nomeLivro = rs.getString("nome");
-									autorLivro = rs.getInt("autor");
-									editoraLivro = rs.getInt("editora");
-									areaLivro = rs.getInt("area");
+									autorLivroFK = rs.getInt("autor");
+									editoraLivroFK = rs.getInt("editora");
+									areaLivroFK = rs.getInt("area");
 									precoLivro = rs.getString("preco");
 									quantidadeLivro = rs.getInt("quantidade");
 							%>
 							<tr>
 								<th scope="row"><%=idLivro%></th>
 								<td><%=nomeLivro%></td>
-								<td><%=autorLivro%></td>
-								<td><%=editoraLivro%></td>
-								<td><%=areaLivro%></td>
+								<td><%=autorLivroFK%></td>
+								<td><%=editoraLivroFK%></td>
+								<td><%=areaLivroFK%></td>
 								<td><%=precoLivro%></td>
 								<td><%=quantidadeLivro%></td>
 							</tr>
@@ -473,16 +495,16 @@
 
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="#">
+					<form method="POST" action=autor>
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
 									<label for="nome">Nome</label> <input class="form-control"
-										name="nomeCliente" type="text" required="required">
+										name="nome" type="text" required="required">
 								</div>
 								<div class="col-md-6">
 									<label for="endereco">Endereco</label><input
-										class="form-control" name="nomeCliente" type="text"
+										class="form-control" name="endereco" type="text"
 										required="required">
 								</div>
 							</div>
@@ -492,7 +514,7 @@
 							<div class="form-row">
 								<div class="col-md-3">
 									<label for="idade">Livros</label> <select class="form-control"
-										required="required" name="livro">
+										required="required" name="livro" disabled>
 										<option selected></option>
 										<option>Livro 1</option>
 										<option>Livro 2</option>
@@ -526,56 +548,48 @@
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Listar autores</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Listar livro</h5>
 
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="#">
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col-md-6">
-									<label for="nome">Nome</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Autor 1</option>
-										<option>Autor 2</option>
-										<option>Autor 3</option>
-										<option>. . .</option>
-									</select>
-								</div>
-								<div class="col-md-6">
-									<label for="endereco">Endereco</label><input
-										class="form-control" name="nomeCliente" type="text"
-										required="required" disabled>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col-md-3">
-									<label for="idade">Livros</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Livro 1</option>
-										<option>Livro 2</option>
-										<option>Livro 3</option>
-										<option>. . .</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<br>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nome</th>
+								<th scope="col">Endereco</th>								
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								int idAutor;
+								String nomeAutor;
+								String enderecoAutor;
+								
+								conn = ConectaDB.getConnection();
 
-						<div class="form-group">
-							<div class="modal-footer">
-								<button type="reset" class="btn btn-secondary">Redefinir</button>
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Voltar</button>
-								<button type="submit" class="btn btn-warning">Atualizar</button>
-							</div>
-						</div>
-					</form>
+								sql = "SELECT * FROM autor";
+
+								stmt = conn.createStatement();
+								rs = stmt.executeQuery(sql);
+								while (rs.next()) {
+									idAutor = rs.getInt("id");
+									nomeAutor = rs.getString("nome");
+									enderecoAutor = rs.getString("endereco");									
+							%>
+							<tr>
+								<th scope="row"><%=idAutor%></th>
+								<td><%=nomeAutor%></td>
+								<td><%=enderecoAutor%></td>								
+							</tr>
+							<%
+								}
+								stmt.close();
+								rs.close();
+								ConectaDB.close(conn);
+							%>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
@@ -592,52 +606,46 @@
 
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="#">
+					<form method="GET" action="autor">
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
 									<label for="nome">Nome</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Autor 1</option>
-										<option>Autor 2</option>
-										<option>Autor 3</option>
-										<option>. . .</option>
-									</select>
-								</div>
-								<div class="col-md-6">
-									<label for="endereco">Endereco</label><input
-										class="form-control" name="nomeCliente" type="text"
-										required="required" disabled>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col-md-3">
-									<label for="idade">Livros</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Livro 1</option>
-										<option>Livro 2</option>
-										<option>Livro 3</option>
-										<option>. . .</option>
+										required="required" name="nome">
+										<option selected="selected"></option>
+										<%
+											String autorRemover;
+
+											conn = ConectaDB.getConnection();
+
+											sql = "SELECT nome FROM autor";
+
+											stmt = conn.createStatement();
+											rs = stmt.executeQuery(sql);
+											while (rs.next()) {
+												autorRemover = rs.getString("nome");
+										%>
+										<option><%=autorRemover%></option>
+										<%
+											}
+											rs.close();
+											stmt.close();
+											ConectaDB.close(conn);
+										%>
 									</select>
 								</div>
 							</div>
-						</div>
-						<br>
+						</div><br><br><br>
 
 						<div class="form-group">
 							<div class="modal-footer">
 								<button type="reset" class="btn btn-secondary">Redefinir</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Voltar</button>
-								<button type="submit" class="btn btn-warning">Remover
-									autor</button>
+								<button type="submit" class="btn btn-warning">Remover</button>
 							</div>
 						</div>
+
 					</form>
 				</div>
 			</div>
@@ -648,26 +656,25 @@
 
 	<!-- EDITORAS -->
 	<!-- MODAL CADASTRAR EDITORA -->
-	<div class="modal fade" id="cadastrarEditora" tabindex="-1"
-		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="cadastrarEditora" tabindex="-1" role="dialog"
+		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Cadastrar
-						editora</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Cadastrar Editora</h5>
 
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="#">
+					<form method="POST" action=editora>
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
 									<label for="nome">Nome</label> <input class="form-control"
-										name="nomeCliente" type="text" required="required">
+										name="nome" type="text" required="required">
 								</div>
 								<div class="col-md-6">
 									<label for="endereco">Endereco</label><input
-										class="form-control" name="nomeCliente" type="text"
+										class="form-control" name="endereco" type="text"
 										required="required">
 								</div>
 							</div>
@@ -676,8 +683,8 @@
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-3">
-									<label for="idade">Livros</label> <select class="form-control"
-										required="required" name="livro">
+									<label for="livros">Livros</label> <select class="form-control"
+										required="required" name="livro" disabled>
 										<option selected></option>
 										<option>Livro 1</option>
 										<option>Livro 2</option>
@@ -705,69 +712,61 @@
 
 	</div>
 
-	<!-- MODAL LISTAR EDITORAS -->
+	<!-- MODAL LISTAR EDITORA -->
 	<div class="modal fade" id="listarEditora" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Listar editoras</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Listar Editora</h5>
 
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="#">
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col-md-6">
-									<label for="nome">Nome</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Autor 1</option>
-										<option>Autor 2</option>
-										<option>Autor 3</option>
-										<option>. . .</option>
-									</select>
-								</div>
-								<div class="col-md-6">
-									<label for="endereco">Endereco</label><input
-										class="form-control" name="nomeCliente" type="text"
-										required="required" disabled>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col-md-3">
-									<label for="idade">Livros</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Livro 1</option>
-										<option>Livro 2</option>
-										<option>Livro 3</option>
-										<option>. . .</option>
-									</select>
-								</div>
-							</div>
-						</div>
-						<br>
+					<table class="table">
+						<thead>
+							<tr>
+								<th scope="col">#</th>
+								<th scope="col">Nome</th>
+								<th scope="col">Endereco</th>								
+							</tr>
+						</thead>
+						<tbody>
+							<%
+								int idEditora;
+								String nomeEditora;
+								String enderecoEditora;
+								
+								conn = ConectaDB.getConnection();
 
-						<div class="form-group">
-							<div class="modal-footer">
-								<button type="reset" class="btn btn-secondary">Redefinir</button>
-								<button type="button" class="btn btn-secondary"
-									data-dismiss="modal">Voltar</button>
-								<button type="submit" class="btn btn-warning">Atualizar</button>
-							</div>
-						</div>
-					</form>
+								sql = "SELECT * FROM editora";
+
+								stmt = conn.createStatement();
+								rs = stmt.executeQuery(sql);
+								while (rs.next()) {
+									idEditora = rs.getInt("id");
+									nomeEditora = rs.getString("nome");
+									enderecoEditora = rs.getString("endereco");									
+							%>
+							<tr>
+								<th scope="row"><%=idEditora%></th>
+								<td><%=nomeEditora%></td>
+								<td><%=enderecoEditora%></td>								
+							</tr>
+							<%
+								}
+								stmt.close();
+								rs.close();
+								ConectaDB.close(conn);
+							%>
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>
 
 	</div>
 
-	<!-- MODAL REMOVER EDITORA -->
+	<!-- MODAL REMOVER EDITORA-->
 	<div class="modal fade" id="removerEditora" tabindex="-1" role="dialog"
 		aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
@@ -777,52 +776,46 @@
 
 				</div>
 				<div class="modal-body">
-					<form method="POST" action="#">
+					<form method="GET" action=editora>
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
 									<label for="nome">Nome</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Autor 1</option>
-										<option>Autor 2</option>
-										<option>Autor 3</option>
-										<option>. . .</option>
-									</select>
-								</div>
-								<div class="col-md-6">
-									<label for="endereco">Endereco</label><input
-										class="form-control" name="nomeCliente" type="text"
-										required="required" disabled>
-								</div>
-							</div>
-						</div>
-						<br>
-						<div class="form-group">
-							<div class="form-row">
-								<div class="col-md-3">
-									<label for="idade">Livros</label> <select class="form-control"
-										required="required" name="livro">
-										<option selected></option>
-										<option>Livro 1</option>
-										<option>Livro 2</option>
-										<option>Livro 3</option>
-										<option>. . .</option>
+										required="required" name="nome">
+										<option selected="selected"></option>
+										<%
+											String editoraRemover;
+
+											conn = ConectaDB.getConnection();
+
+											sql = "SELECT nome FROM editora";
+
+											stmt = conn.createStatement();
+											rs = stmt.executeQuery(sql);
+											while (rs.next()) {
+												editoraRemover = rs.getString("nome");
+										%>
+										<option><%=editoraRemover%></option>
+										<%
+											}
+											rs.close();
+											stmt.close();
+											ConectaDB.close(conn);
+										%>
 									</select>
 								</div>
 							</div>
-						</div>
-						<br>
+						</div><br><br><br>
 
 						<div class="form-group">
 							<div class="modal-footer">
 								<button type="reset" class="btn btn-secondary">Redefinir</button>
 								<button type="button" class="btn btn-secondary"
 									data-dismiss="modal">Voltar</button>
-								<button type="submit" class="btn btn-warning">Remover
-									editora</button>
+								<button type="submit" class="btn btn-warning">Remover</button>
 							</div>
 						</div>
+
 					</form>
 				</div>
 			</div>
