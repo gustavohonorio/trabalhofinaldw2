@@ -6,7 +6,7 @@
 <%@	page import="java.sql.Statement"%>
 <%@ page import="livraria.util.ConectaDB"%>
 <%@ page import="livraria.controller.LivroServlet" %>
-<!-- variaveis "globais" -->
+
 <% 
 Connection conn;
 String sql;
@@ -92,18 +92,17 @@ ResultSet rs;
 
 				</div>
 				<div class="modal-body">
-					<form method="POST"
-						action="../controller/membros/cadastrarMembro.php">
+					<form method="GET"	action=venda>
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
 									<label for="nome">Nome do cliente</label> <input
-										class="form-control" name="nomeCliente" type="text"
+										class="form-control" name="nome" type="text"
 										required="required">
 								</div>
 								<div class="col-md-6">
 									<label for="endereco">Endereço do cliente</label> <input
-										class="form-control" name="enderecoCliente" type="text">
+										class="form-control" name="endereco" type="text">
 								</div>
 							</div>
 						</div>
@@ -111,7 +110,7 @@ ResultSet rs;
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-3">
-									<label for="idade">Livro</label> <select class="form-control"
+									<label for="livro">Livro</label> <select class="form-control"
 										required="required" name="livro">
 										<option selected="selected"></option>
 										<%
