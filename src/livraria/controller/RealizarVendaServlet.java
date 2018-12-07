@@ -1,6 +1,7 @@
 package livraria.controller;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -26,7 +27,9 @@ public class RealizarVendaServlet extends HttpServlet {
 	PreparedStatement pstm;
 
 	@Override
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		PrintWriter out = resp.getWriter();
+		
 		String nome = req.getParameter("nome");
 		String endereco = req.getParameter("endereco");
 		String livro = req.getParameter("livro");
@@ -120,9 +123,71 @@ public class RealizarVendaServlet extends HttpServlet {
 			pstm = conn.prepareStatement(sql);
 			pstm.executeUpdate();
 			pstm.close();
-			resp.sendRedirect("/trabalhofinaldw2-livraria/index.jsp");
+			//resp.sendRedirect("/trabalhofinaldw2-livraria/index.jsp");
 		} catch (SQLException e) {
 			e.printStackTrace();
+		}
+		
+		
+		//Regras de negocio do parcelamento da nota fiscal
+		if(pagamento.equals("A vista")) {
+			out.println("<html><body>");
+			out.println("<h1>************************</h1><br>");
+			out.println("<h1>");
+			out.println("NOTA FISCAL : "+nroNF+"    -    FATURA : "+nroFatura+"");
+			out.println("</h1><br><br>");
+			out.println("<h2>");
+			out.println("Cliente: "+nome+"	<br>Endereço de cobrança: "+endereco+" .");
+			out.println("</h2><br>");
+			out.println("<h2>");
+			out.println("Livro: "+livro+"	<br>Quantidade: "+quantidade+" .");
+			out.println("</h2>");
+			out.println("<h2>");
+			out.println("Valor total: "+valornota+"	<br>Forma de pagamento: "+pagamento+" .");
+			out.println("</h2>");
+			out.println("<h1>************************</h1><br>");
+			out.println("</body></html>");
+			
+			out.close();
+			
+		}else if(pagamento=="2x sem juros") {
+			out.println("<html><body>");
+			out.println("<h1>************************</h1><br>");
+			out.println("<h1>");
+			out.println("NOTA FISCAL : "+nroNF+"    -    FATURA : "+nroFatura+"");
+			out.println("</h1><br><br>");
+			out.println("<h2>");
+			out.println("Cliente: "+nome+"	<br>Endereço de cobrança: "+endereco+" .");
+			out.println("</h2><br>");
+			out.println("<h2>");
+			out.println("Livro: "+livro+"	<br>Quantidade: "+quantidade+" .");
+			out.println("</h2>");
+			out.println("<h2>");
+			out.println("Valor total: "+valornota+"	<br>Forma de pagamento: "+pagamento+" <br>Datas de pagamento: A combinar.");
+			out.println("</h2>");
+			out.println("<h1>************************</h1><br>");
+			out.println("</body></html>");
+			
+			out.close();
+		}else {
+			out.println("<html><body>");
+			out.println("<h1>************************</h1><br>");
+			out.println("<h1>");
+			out.println("NOTA FISCAL : "+nroNF+"    -    FATURA : "+nroFatura+"");
+			out.println("</h1><br><br>");
+			out.println("<h2>");
+			out.println("Cliente: "+nome+"	<br>Endereço de cobrança: "+endereco+" .");
+			out.println("</h2><br>");
+			out.println("<h2>");
+			out.println("Livro: "+livro+"	<br>Quantidade: "+quantidade+" .");
+			out.println("</h2>");
+			out.println("<h2>");
+			out.println("Valor total: "+valornota+"	<br>Forma de pagamento: "+pagamento+" <br>Datas de pagamento: A combinar.");
+			out.println("</h2>");
+			out.println("<h1>************************</h1><br>");
+			out.println("</body></html>");
+			
+			out.close();
 		}
 
 	}

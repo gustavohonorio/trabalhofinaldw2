@@ -5,13 +5,13 @@
 <%@	page import="java.sql.SQLException"%>
 <%@	page import="java.sql.Statement"%>
 <%@ page import="livraria.util.ConectaDB"%>
-<%@ page import="livraria.controller.LivroServlet" %>
+<%@ page import="livraria.controller.LivroServlet"%>
 
-<% 
-Connection conn;
-String sql;
-Statement stmt;
-ResultSet rs;
+<%
+	Connection conn;
+	String sql;
+	Statement stmt;
+	ResultSet rs;
 %>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -92,7 +92,7 @@ ResultSet rs;
 
 				</div>
 				<div class="modal-body">
-					<form method="GET"	action=venda>
+					<form method="POST" action=venda>
 						<div class="form-group">
 							<div class="form-row">
 								<div class="col-md-6">
@@ -223,7 +223,7 @@ ResultSet rs;
 										<option selected="selected"></option>
 										<%
 											String autor;
-											
+
 											conn = ConectaDB.getConnection();
 
 											sql = "SELECT nome FROM autor";
@@ -366,7 +366,7 @@ ResultSet rs;
 								String precoLivro;
 								int quantidadeLivro;
 								LivroServlet l = new LivroServlet();
-								
+
 								conn = ConectaDB.getConnection();
 
 								sql = "SELECT * FROM livro";
@@ -556,7 +556,7 @@ ResultSet rs;
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Nome</th>
-								<th scope="col">Endereco</th>								
+								<th scope="col">Endereco</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -564,7 +564,7 @@ ResultSet rs;
 								int idAutor;
 								String nomeAutor;
 								String enderecoAutor;
-								
+
 								conn = ConectaDB.getConnection();
 
 								sql = "SELECT * FROM autor";
@@ -574,12 +574,12 @@ ResultSet rs;
 								while (rs.next()) {
 									idAutor = rs.getInt("id");
 									nomeAutor = rs.getString("nome");
-									enderecoAutor = rs.getString("endereco");									
+									enderecoAutor = rs.getString("endereco");
 							%>
 							<tr>
 								<th scope="row"><%=idAutor%></th>
 								<td><%=nomeAutor%></td>
-								<td><%=enderecoAutor%></td>								
+								<td><%=enderecoAutor%></td>
 							</tr>
 							<%
 								}
@@ -634,7 +634,10 @@ ResultSet rs;
 									</select>
 								</div>
 							</div>
-						</div><br><br><br>
+						</div>
+						<br>
+						<br>
+						<br>
 
 						<div class="form-group">
 							<div class="modal-footer">
@@ -655,12 +658,13 @@ ResultSet rs;
 
 	<!-- EDITORAS -->
 	<!-- MODAL CADASTRAR EDITORA -->
-	<div class="modal fade" id="cadastrarEditora" tabindex="-1" role="dialog"
-		aria-labelledby="exampleModalLabel" aria-hidden="true">
+	<div class="modal fade" id="cadastrarEditora" tabindex="-1"
+		role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 		<div class="modal-dialog" role="document">
 			<div class="modal-content">
 				<div class="modal-header">
-					<h5 class="modal-title" id="exampleModalLabel">Cadastrar Editora</h5>
+					<h5 class="modal-title" id="exampleModalLabel">Cadastrar
+						Editora</h5>
 
 				</div>
 				<div class="modal-body">
@@ -726,7 +730,7 @@ ResultSet rs;
 							<tr>
 								<th scope="col">#</th>
 								<th scope="col">Nome</th>
-								<th scope="col">Endereco</th>								
+								<th scope="col">Endereco</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -734,7 +738,7 @@ ResultSet rs;
 								int idEditora;
 								String nomeEditora;
 								String enderecoEditora;
-								
+
 								conn = ConectaDB.getConnection();
 
 								sql = "SELECT * FROM editora";
@@ -744,12 +748,12 @@ ResultSet rs;
 								while (rs.next()) {
 									idEditora = rs.getInt("id");
 									nomeEditora = rs.getString("nome");
-									enderecoEditora = rs.getString("endereco");									
+									enderecoEditora = rs.getString("endereco");
 							%>
 							<tr>
 								<th scope="row"><%=idEditora%></th>
 								<td><%=nomeEditora%></td>
-								<td><%=enderecoEditora%></td>								
+								<td><%=enderecoEditora%></td>
 							</tr>
 							<%
 								}
@@ -804,7 +808,10 @@ ResultSet rs;
 									</select>
 								</div>
 							</div>
-						</div><br><br><br>
+						</div>
+						<br>
+						<br>
+						<br>
 
 						<div class="form-group">
 							<div class="modal-footer">
